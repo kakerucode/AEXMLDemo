@@ -1,0 +1,25 @@
+PODS:
+  - AEXML (4.2.2)
+  - Kanna (4.0.0)
+
+DEPENDENCIES:
+  - AEXML
+  - Kanna (from `https://github.com/tid-kijyun/Kanna.git`, branch `feature/v4.0.0`)
+
+EXTERNAL SOURCES:
+  Kanna:
+    :branch: feature/v4.0.0
+    :git: https://github.com/tid-kijyun/Kanna.git
+
+CHECKOUT OPTIONS:
+  Kanna:
+    :commit: 58e3513d20cd16fe8b9ff16b5a2b481fcd643499
+    :git: https://github.com/tid-kijyun/Kanna.git
+
+SPEC CHECKSUMS:
+  AEXML: 5ebafc1b75e0bcf0f1b09b8ca8fed2d5a199479b
+  Kanna: d5ae2a26472f7e7a474e7f36a9cd8aa2c8c63ad3
+
+PODFILE CHECKSUM: 16393190234cd3e8cdae23b5ff51563b325e8b9e
+
+COCOAPODS: 1.2.1
