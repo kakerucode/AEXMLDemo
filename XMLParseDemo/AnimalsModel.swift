@@ -8,24 +8,35 @@
 
 import Foundation
 import AEXML
+import Kanna
 
-
-
-
-
-struct AnimalsModel {
+struct AnimalsModel: Decodable {
     
-    var cats: [CatModel]?
+    var cats: CatsModel?
     var dogs: [DogModel]?
+    var lion: LionModel?
+    var bats: [BatModel]?
     
+    var value: String?
 
-    init(xmlString: String) {
-    
-        cats = [CatModel]()
-        dogs = [DogModel]()
+    init(xml: String) {
         
-        cats = parseModel(node: "cats", xmlString: xmlString)
         
+        cats = "cats" <~~ xml
+        lion = "lion" <~~ xml
+        bats = "bats" <~~ xml
+        
+        
+//        cats = parseModel(node: "cats", xml: xml)
+//        lion = parseModel(node: "lion", xml: xml)
+//        bats = parseModel(node: "bat", xml: xml)
+        
+        print("lion = \(lion)")
+        print("cats = \(cats?.cats)")
+        
+        
+        
+//        dogs = parseModel(node: "dogs", xmlString: xml)
         
 //        do {
 //            let xmlDoc = try AEXMLDocument(xml: xmlString)
@@ -49,86 +60,104 @@ struct AnimalsModel {
 //        }
     }
     
-
-    func parseModel<T: Decodable>(node: String, xmlString: String) -> [T]? {
-        
-        var models: [T] = []
-        do {
-            let xmlDoc = try AEXMLDocument(xml: xmlString)
-            let elements = xmlDoc[node].children
-            for element in elements {
-                if let model = T(xml: element.xml) {
-                    models.append(model)
-                }
-            }
-            
-            return models
-            
-        } catch {
-            print("\(error)")
-        }
-        return nil
-    }
-    
-    func parseModel<T: Decodable>(node: String, xmlString: String) -> T? {
-        
-        do {
-            let xmlDoc = try AEXMLDocument(xml: xmlString)
-            if let element = xmlDoc[node].first {
-                
-                let model = T(xml: element.xml)
-                return model
-            }
-            
-        } catch {
-            print("\(error)")
-        }
-        
-        return nil
-    }
-    
-    
-    func parseModel(attribute: [String], node: String, xmlString: String) -> String? {
-        
-        do {
-            let xmlDoc = try AEXMLDocument(xml: xmlString)
-            let element = xmlDoc[node].first
-            return element?.value
-            
-            
-        } catch {
-            print("\(error)")
-        }
-        
-        return nil
-    }
-    
-    
-    func createModel<T: Decodable>(xmlString: String) -> T? {
-        
-        do {
-            let xmlDoc = try AEXMLDocument(xml: xmlString)
-            
-            
-            
-        } catch {
-            print("\(error)")
-        }
-        return nil
-    }
-    
-    
-    
 }
 
-protocol Decodable {
+public protocol Decodable {
     
     init?(xml: String)
     
 }
 
 
+func parseModel<T: Decodable>(node: String, xml: String) -> [T]? {
+    
+    do {
+        var models: [T] = []
+        let xmlDoc = try Kanna.XML(xml: xml, encoding: .utf8)
+        for element in xmlDoc.xpath("//" + node) {
+            
+            if let elementXML = element.toXML, let model = T(xml: elementXML)  {
+                models.append(model)
+            }
+        }
+        return models
+        
+    } catch {
+        print("\(error)")
+    }
+    return nil
+}
 
+
+func parseModel<T: Decodable>(node: String, xml: String) -> T? {
+    
+    do {
+        let xmlDoc = try Kanna.XML(xml: xml, encoding: .utf8)
+        if let element = xmlDoc.at_xpath("//" + node), let elementXML = element.toXML {
+            let model = T(xml: elementXML)
+            return model
+        }
+
+    } catch {
+        print("\(error)")
+    }
+    
+    return nil
+}
+
+func parseModel(node: String, xml: String) -> String? {
+    
+    do {
+        let xmlDoc = try Kanna.XML(xml: xml, encoding: .utf8)
+        if let element = xmlDoc.at_xpath("//" + node) {
+            return element.content
+        }
+    } catch {
+        print("\(error)")
+    }
+    return nil
+}
+
+func parseAttribute(node: String, attributeName: String, xml: String) -> String? {
+    
+    do {
+        let xmlDoc = try Kanna.XML(xml: xml, encoding: .utf8)
+        if let element = xmlDoc.at_xpath("//" + node) {
+            return element[attributeName]
+        }
+    } catch {
+        print("\(error)")
+    }
+    
+    return nil
+}
+
+
+//precedencegroup DecodingPrecedence {
+//    associativity: left
+//    higherThan: CastingPrecedence
+//}
+
+
+// MARK: 运算符重载
+
+infix operator <~~
+
+public func <~~ <T: Decodable>(node: String, xml: String) -> T? {
+    
+    return parseModel(node: node, xml: xml)
+}
+
+public func <~~ <T: Decodable>(node: String, xml: String) -> [T]? {
+    
+    return parseModel(node: node, xml: xml)
+}
+
+
+public func <~~ (node: String, xml: String) -> String? {
+    
+    return parseModel(node: node, xml: xml)
+}
 
 
 

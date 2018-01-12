@@ -19,6 +19,9 @@
 		E950964C2004B5CF002BD028 /* CatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E950964B2004B5CF002BD028 /* CatModel.swift */; };
 		E950964E2004B5E4002BD028 /* DogModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E950964D2004B5E4002BD028 /* DogModel.swift */; };
 		E95096502004B920002BD028 /* AnimalsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E950964F2004B920002BD028 /* AnimalsModel.swift */; };
+		E9892B5C20084EAF00315F3B /* CatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9892B5B20084EAF00315F3B /* CatsModel.swift */; };
+		E9892B5E20085BB400315F3B /* LionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9892B5D20085BB400315F3B /* LionModel.swift */; };
+		E9892B602008630D00315F3B /* BatModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9892B5F2008630D00315F3B /* BatModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +62,9 @@
 		E950964B2004B5CF002BD028 /* CatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatModel.swift; sourceTree = "<group>"; };
 		E950964D2004B5E4002BD028 /* DogModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogModel.swift; sourceTree = "<group>"; };
 		E950964F2004B920002BD028 /* AnimalsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimalsModel.swift; sourceTree = "<group>"; };
+		E9892B5B20084EAF00315F3B /* CatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsModel.swift; sourceTree = "<group>"; };
+		E9892B5D20085BB400315F3B /* LionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LionModel.swift; sourceTree = "<group>"; };
+		E9892B5F2008630D00315F3B /* BatModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,8 +139,11 @@
 				E950961D2004A4F7002BD028 /* ViewController.swift */,
 				E95096492004AF8E002BD028 /* XMLString.swift */,
 				E950964F2004B920002BD028 /* AnimalsModel.swift */,
+				E9892B5D20085BB400315F3B /* LionModel.swift */,
+				E9892B5B20084EAF00315F3B /* CatsModel.swift */,
 				E950964B2004B5CF002BD028 /* CatModel.swift */,
 				E950964D2004B5E4002BD028 /* DogModel.swift */,
+				E9892B5F2008630D00315F3B /* BatModel.swift */,
 				E950961F2004A4F7002BD028 /* Main.storyboard */,
 				E95096222004A4F7002BD028 /* Assets.xcassets */,
 				E95096242004A4F7002BD028 /* LaunchScreen.storyboard */,
@@ -350,7 +359,10 @@
 				E95096502004B920002BD028 /* AnimalsModel.swift in Sources */,
 				E950964E2004B5E4002BD028 /* DogModel.swift in Sources */,
 				E950964A2004AF8E002BD028 /* XMLString.swift in Sources */,
+				E9892B602008630D00315F3B /* BatModel.swift in Sources */,
 				E950964C2004B5CF002BD028 /* CatModel.swift in Sources */,
+				E9892B5E20085BB400315F3B /* LionModel.swift in Sources */,
+				E9892B5C20084EAF00315F3B /* CatsModel.swift in Sources */,
 				E950961C2004A4F7002BD028 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,13 +9,13 @@
 import Foundation
 import AEXML
 
-struct DogModel {
+struct DogModel: Decodable {
     
     var name: String?
     var breed: String?
     var color: String?
     
-    init(xmlString: String) {
+    init(xml: String) {
      
         do {
             let xmlDoc = try AEXMLDocument(xml: xmlString)

@@ -11,8 +11,11 @@ import Foundation
 
 let xmlString = """
 <?xml version="1.0" encoding="utf-8"?>
-<animals>
-<cats>
+<animals>All animals
+<bat> BatMan </bat>
+<bat> Robin </bat>
+
+<cats> Kitty
 <cat breed="Siberian" color="lightgray">Tinna</cat>
 <cat breed="Domestic" color="darkgray">Rose</cat>
 <cat breed="Domestic" color="yellow">Caesar</cat>
@@ -24,5 +27,7 @@ let xmlString = """
 <dog breed="Golden Retriever" color="yellow">Betty</dog>
 <dog breed="Miniature Schnauzer" color="black">Kika</dog>
 </dogs>
+<lion>LionKing</lion>
+
 </animals>
 """

@@ -14,24 +14,42 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let animals = AnimalsModel(xmlString: xmlString)
+        let animals = AnimalsModel(xml: xmlString)
         
-        do {
-            let xml = try Kanna.XML(xml: xmlString, encoding: .utf8)
-            let animalsElement = xml.at_xpath("//cat")
-            
-            let cats = xml.xpath("//cats")
-            
         
-            animalsElement?.content
-            
-            
-            
-        } catch {
-            print("\(error)")
-        }
         
+        
+        
+//        do {
+//            let xml = try Kanna.XML(xml: xmlString, encoding: .utf8)
+//            let catsElements = xml.at_xpath("//cats")
+//            let catsNode = xml.xpath("//cats")
+//
+//            for cat in xml.xpath("//cat") {
+//
+//                print("\(cat.toHTML)")
+//            }
+//
+//
+//            let catsXML = catsElements?.innerHTML
+//
+//            let catsDoc = try Kanna.XML(xml: catsXML!, encoding: .utf8)
+//
+//            let catNode = catsDoc.xpath("//cat")
+//
+//
+//
+//            let cats = xml.xpath("//cats")
+//            catsElements?.content
+//
+//
+//
+//        } catch {
+//            print("\(error)")
+//        }
     }
-
 }
+
+
+
 

@@ -15,19 +15,15 @@ struct CatModel: Decodable {
     var breed: String?
     var color: String?
     
-    
-    var kittys:?
-    
-    init(xmlString: String) {
+    init(xml: String) {
         
-        do {
-            let xmlDoc = try AEXMLDocument(xml: xmlString)
-            name = xmlDoc.root.value
-            breed = xmlDoc.root.attributes["breed"]
-            color = xmlDoc.root.attributes["color"]
-        } catch {
-            print("error = \(error)")
-        }
+//        name = parseModel(node: "cat", xml: xml)
+        
+        name = "cat" <~~ xml
+        
+        breed = parseAttribute(node: "cat", attributeName: "breed", xml: xml)
+        color = parseAttribute(node: "cat", attributeName: "color", xml: xml)
+        
     }
     
 }
